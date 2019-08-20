@@ -27,7 +27,7 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
      *
      * @param authentication 包含了当前的用户信息，包括拥有的权限。这里的权限来源就是前面登录时UserDetailsService中设置的authorities。
      * @param object  就是FilterInvocation对象，可以得到request等web资源
-     * @param configAttributes configAttributes是本次访问需要的权限
+     * @param configAttributes configAttributes是本次访问需要的权限，该权限的获取是从AbstractSecurityInterceptor 的Collection<ConfigAttribute> attributes = this.obtainSecurityMetadataSource().getAttributes(object);这个方法中获取的并传达进来
      */
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
